@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Gourav094/task-manager.git'
+                git 'https://github.com/Gourav094/password-manager-backend.git'
             }
         }
         stage('Build Docker Image') {
