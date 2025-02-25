@@ -3,12 +3,13 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "gourav094/password-manager:latest"
-    }
+        K8S_NAMESPACE = 'default'
+    }    
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/Gourav094/password-manager-backend.git'
+                git 'https://github.com/Gourav094/password-manager-backend.git'
             }
         }
 
@@ -30,6 +31,14 @@ pipeline {
             steps {
                 sh 'kubectl apply -f k8s/'
             }
+        }
+    }
+    post {
+        success {
+            echo "Deployment Successful!"
+        }
+        failure {
+            echo "Pipeline Failed!"
         }
     }
 }
