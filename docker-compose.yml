@@ -16,3 +16,5 @@ services:
 networks:
   passwordmanager-network:
     driver: bridge
+
+
